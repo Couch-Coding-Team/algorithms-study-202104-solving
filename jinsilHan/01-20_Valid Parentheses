@@ -1,0 +1,36 @@
+var isValid = function (s) {
+  let arr = [];
+  arr = s.split("");
+  let openBracketStack = new Array();
+  let stackIndex = -1;
+
+  if (arr[0] == ")" || arr[0] == "}" || arr[0] == "]") {
+    return false;
+  } else {
+    openBracketStack.push(arr[0]);
+    stackIndex++;
+  }
+
+  for (let i = 1; i < arr.length; i++) {
+    if ((arr[i] == ")" || arr[i] == "}" || arr[i] == "]") && stackIndex >= 0) {
+      if (
+        openBracketStack[stackIndex].charCodeAt() + 1 == arr[i].charCodeAt() ||
+        openBracketStack[stackIndex].charCodeAt() + 2 == arr[i].charCodeAt()
+      ) {
+        openBracketStack.pop();
+        stackIndex--;
+      } else {
+        return false;
+      }
+    } else {
+      openBracketStack.push(arr[i]);
+      stackIndex++;
+    }
+  }
+
+  if (openBracketStack.length == 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
