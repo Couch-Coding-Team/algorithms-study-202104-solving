@@ -1,0 +1,31 @@
+var countSubstrings = function (s) {
+  const size = s.length;
+  let count = size;
+  let arr = [];
+  arr = s.split("");
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      console.log("aaa" + ((j + 1) % 2));
+      if (j + (1 % 2) == 0) {
+        console.log(j + (1 % 2));
+        let index = j + 1 / 2;
+        let arr = arr.slice(i, index);
+        let arr2 = arr.slice(index, j).reverse;
+        console.log("arr2: " + arr2);
+        if (arr == arr2) {
+          count++;
+        }
+      } else {
+        let index = j + 1 / 2;
+        let array = arr.slice(i, index - 1);
+        let arr2 = arr.slice(index + 1, j).reverse;
+        if (array === arr2) {
+          count++;
+        }
+      }
+    }
+  }
+
+  return count;
+};
