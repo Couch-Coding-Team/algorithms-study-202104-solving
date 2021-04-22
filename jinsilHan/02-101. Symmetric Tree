@@ -1,0 +1,19 @@
+var isSymmetric = function(root) {
+    console.log(root)
+    return isMirrorSelf(root.left, root.right);
+};
+
+var isMirrorSelf = function(tLeft, tRight){
+    if(tLeft == null && tRight == null){
+        return true;
+    }
+    if(tLeft == null || tRight == null){
+        return false;
+    }
+    
+    if((tLeft.val == tRight.val) && isMirrorSelf(tLeft.right, tRight.left) && isMirrorSelf(tLeft.left, tRight.right)){
+        return true;
+    }else{
+        return false;
+    }
+}
