@@ -1,0 +1,24 @@
+var flatten = function(root) {
+    if(!root) return;
+    
+    let stack = [];
+    stack.push(root);
+    
+    while(stack.length){
+        const now = stack.pop();
+        
+        if(now.right){
+            stack.push(now.right);
+        }
+        if(now.left){
+            stack.push(now.left);
+        }
+        
+        if(stack.length != 0){
+            now.right = stack[stack.length-1]
+        }
+        
+        now.left = null;
+    }
+    
+};
