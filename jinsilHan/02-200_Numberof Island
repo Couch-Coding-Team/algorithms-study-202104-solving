@@ -1,0 +1,48 @@
+/**
+ * @param {character[][]} grid
+ * @return {number}
+ */
+
+var numIslands = function(grid) {
+    
+//     방문 안한 곳인데 1이면 새육지 발견 탐색 시작 
+//     위/아래/왼/오 한 곳이라도 연결되어있으면 육지랑 연결 되어있다. 
+//     now위치부터 탐색해나간다. 탐색한 곳은 방문했다고 저장
+//     now위치로부터 육지끝까지 탐색한 후 , 육지count ++
+    
+//     육지Count 반환.
+    
+    let rowLength = grid.length; 
+    let colLength = grid[0].length;
+    let islandCount = 0;
+    
+    for(let i = 0; i < rowLength; i++){
+        for(let j = 0; j < colLength; j++){
+            if(grid[i][j] == '1'){
+                islandCount++;
+                isIsland(grid,i,j,rowLength,colLength);
+            }
+        }
+    }
+    return islandCount;
+};
+
+var isIsland = function(grid,i,j,rowLength,colLength){
+    grid[i][j] = '0';
+    //상
+     if(i > 0 && grid[i-1][j] == "1"){
+        isIsland(grid,i-1, j, rowLength, colLength);
+     }
+    //하
+     if(i < rowLength - 1 && grid[i+1][j] == "1"){
+        isIsland(grid, i+1, j, rowLength, colLength);
+     } 
+    //좌
+     if(j > 0 && grid[i][j-1] == "1"){
+        isIsland(grid, i, j-1, rowLength, colLength);
+     }
+    //우
+     if(j < colLength-1 && grid[i][j+1] == "1"){
+        isIsland(grid, i, j+1, rowLength, colLength);
+     }    
+}
