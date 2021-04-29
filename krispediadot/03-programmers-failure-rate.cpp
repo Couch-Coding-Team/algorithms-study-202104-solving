@@ -44,7 +44,7 @@ vector<int> solution(int N, vector<int> stages) {
     for (auto s : stages) m[s]++;
         
     // 2. 실패율 계산
-    vector<pair<float, int>> failure; // {실패율, 스테이지}
+    vector<pair<float, int>> failure; //{실패율, 스테이지}
     
     int people = stages.size();
     for (int stage = 1; stage <= N; stage++) {
