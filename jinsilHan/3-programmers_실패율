@@ -1,0 +1,46 @@
+function solution(N, stages) {
+    var answer = [];
+    answer.length = N;
+    answer.fill(0);
+    
+    const usersCount = stages.length; //유저수 8 
+    
+    let usersCountByStage = [];
+    usersCountByStage.length = N; // 스테이지수 5 (+1)
+    usersCountByStage.fill(0);
+    let clearUsers = 0;
+    
+    for(let i = 0 ;i < usersCount; i++){
+        if(stages[i] === N+1){
+            clearUsers++;
+        }else{
+            
+            usersCountByStage[stages[i]-1]++;   
+        }
+    }
+    let failPercent = [];
+    let arr = [];
+     //스테이지 별 실패율 넣기
+    for(let i = usersCountByStage.length-1; i > -1; i--){
+        clearUsers += usersCountByStage[i];        
+        failPercent.push(usersCountByStage[i] / clearUsers);
+        arr.push(usersCountByStage[i] / clearUsers);
+    }
+    
+    failPercent.sort(function(a, b)  {
+        return b - a;
+        })
+                    
+    for( let i = 0 ; i < failPercent.length ; i++){
+        for(let j = 0 ; j < arr.legnth; j++){
+            if(arr[j] == failPercent[i]){
+                answer[i] = j;
+                console.log(arr.length)
+            }
+        }
+    }
+    
+    
+    
+    return answer;
+}
