@@ -1,10 +1,6 @@
 // 16ms, 10.1M, 00:10:00
 class Solution {
-public:
-    void bfs(vector<vector<char>>& grid) {
-        
-    }
-    
+public:    
     int numIslands(vector<vector<char>>& grid) {
         
         auto is_valid = [&](int& r, int& c) {
