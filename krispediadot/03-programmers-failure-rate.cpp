@@ -42,8 +42,7 @@ vector<int> solution(int N, vector<int> stages) {
     // 1. 스테이지 개수 세기
     unordered_map<int, int> m;
     for (auto s : stages) m[s]++;
-    
-    
+        
     // 2. 실패율 계산
     vector<pair<float, int>> failure; // {실패율, 스테이지}
     
