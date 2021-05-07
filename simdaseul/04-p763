@@ -1,0 +1,42 @@
+/**
+ * @param {string} S
+ * @return {number[]}
+ */
+var partitionLabels = function(S) {
+    let leftPoint = 0;
+    let rightPoint = S.length - 1;
+    let ans = [];
+    
+    while(leftPoint <= rightPoint){
+        for(let i = rightPoint; i >= leftPoint; i--){
+            let L = S[leftPoint];
+            let R = S[i];
+            //let lenHash = {};
+            if(L === R){
+                let len = i - leftPoint + 1;
+                if(len === 1){
+                    ans.push(1);
+                    leftPoint = i + 1;
+                    break;
+                }
+                //lenHash[L] = len;
+                for(let k = 1; k < len; k++){
+                    for(let j = rightPoint; j > i; j--){
+                        let l = S[leftPoint+k];
+                        let r = S[j];
+                        if(l === r){
+                            i = j;
+                            len = i - leftPoint + 1;
+                            break;
+                        }
+                    }    
+                    
+                }
+                ans.push(len);
+                leftPoint += len;
+                break;
+            }
+        }
+    }    
+    return ans;
+};

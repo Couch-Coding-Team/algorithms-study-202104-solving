@@ -1,0 +1,26 @@
+/**
+ * @param {number[][]} people
+ * @return {number[][]}
+ */
+var reconstructQueue = function(people) {
+    let ans = [];
+    people.sort((a,b)=>a[0]-b[0]);
+    let len = people.length;
+    while(people.length){
+        let min = people.shift()
+            let undefCnt = 0;
+            for(let i = 0; i < len; i++){
+                if(ans[i] === undefined || ans?.[i]?.[0] === min[0]){
+                    if(undefCnt === min[1]){
+                        ans[i] = min;
+                        break;
+                    }
+                    undefCnt++;
+                }
+            }
+
+    }
+    //console.log(ans)
+    return ans
+    
+};

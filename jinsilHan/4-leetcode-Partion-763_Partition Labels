@@ -1,0 +1,16 @@
+var partitionLabels = function (S) {
+  const answer = [];
+  let left = 0;
+  while (left < S.length) {
+    let start = left;
+    let right = S.lastIndexOf(S[left]);
+    while (left < right) {
+        left++;
+        let temp = S.lastIndexOf(S[left]);
+        right = Math.max(right, temp);
+    }
+    left++;
+    answer.push(right - start + 1);
+  }
+  return answer;
+};
