@@ -1,0 +1,17 @@
+var numDecodings = function(s) {
+    let memo = Array(s.length).fill(null);
+    return helper(s, 0, memo);
+};
+
+var helper = (s, start, memo) => {
+    if (start === s.length) return 1;
+    if (s[start] === '0') return 0;
+    if (start === s.length-1) return 1;
+    if (memo[start] !== null) return memo[start];
+    
+    let result = helper(s, start+1, memo);
+    if (Number(s.slice(start, start+2)) <= 26) result += helper(s, start+2, memo)
+    
+    memo[start] = result;
+    return result;
+}
